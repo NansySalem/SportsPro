@@ -192,12 +192,10 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\Index.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Create.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Delete.cshtml.g.cs
-C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Details.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Edit.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Create.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Delete.cshtml.g.cs
-C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Details.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Edit.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Index.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
@@ -212,3 +210,5 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\Index - Copy.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Details.cshtml.g.cs
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Details.cshtml.g.cs

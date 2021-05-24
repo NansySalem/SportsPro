@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SportsPro.Models
 {
@@ -8,12 +9,15 @@ namespace SportsPro.Models
 		public int CustomerID { get; set; }
 
 		[Required]
+		[DisplayName("First Name")]
 		public string FirstName { get; set; }
 
 		[Required]
+		[DisplayName("Last Name")]
 		public string LastName { get; set; }
 
 		[Required]
+		[DisplayName("Address")]
 		public string Address { get; set; }
 
 		[Required]
@@ -23,9 +27,11 @@ namespace SportsPro.Models
 		public string State { get; set; }
 
 		[Required]
+		[DisplayName("Postal Code")]
 		public string PostalCode { get; set; }
 
 		[Required]
+		[DisplayName("Country")]
 		public string CountryID { get; set; }
 		public Country Country { get; set; }
 
@@ -33,6 +39,7 @@ namespace SportsPro.Models
 
 		public string Email { get; set; }
 
+		[DisplayName("Name")]
 		public string FullName => FirstName + " " + LastName;   // read-only property
 	}
 }

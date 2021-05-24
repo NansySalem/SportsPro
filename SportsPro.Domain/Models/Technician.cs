@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SportsPro.Models
 {
     public class Technician
     {
+		[DisplayName("Technician Id#")]
 		public int TechnicianID { get; set; }	   
 
 		[Required]

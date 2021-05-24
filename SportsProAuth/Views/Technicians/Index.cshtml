@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<SportsPro.Models.Technician>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Technician Manager";
 }
 
-<h1>Index</h1>
+<h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -38,10 +36,14 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TechnicianID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TechnicianID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TechnicianID">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create">Add new technician</a> |
+    <a href="../">Back</a>
+</p>
