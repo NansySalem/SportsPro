@@ -16,6 +16,7 @@ namespace SportsPro.Models
 		public string ProductCode { get; set; }
 
 		[Required]
+		[DisplayName("Product Name")]
 		public string Name { get; set; }
 
 		[Range(0, 1000000)]

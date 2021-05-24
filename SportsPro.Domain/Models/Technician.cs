@@ -10,6 +10,7 @@ namespace SportsPro.Models
 		public int TechnicianID { get; set; }	   
 
 		[Required]
+		[DisplayName("Technician Name")]
 		public string Name { get; set; }
 
 		[Required]

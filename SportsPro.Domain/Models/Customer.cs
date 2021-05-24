@@ -39,7 +39,7 @@ namespace SportsPro.Models
 
 		public string Email { get; set; }
 
-		[DisplayName("Name")]
+		[DisplayName("Customer Name")]
 		public string FullName => FirstName + " " + LastName;   // read-only property
 	}
 }

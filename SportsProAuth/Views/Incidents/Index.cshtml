@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.DateOpened)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
+                <a asp-action="Upsert" asp-route-id="@item.IncidentID">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
             </td>
         </tr>
@@ -50,6 +50,6 @@
 </table>
 
 <p>
-    <a asp-action="Create">Add new incident</a> |
+    <a asp-action="Upsert">Add new incident</a> |
     <a href="../">Back</a>
 </p>

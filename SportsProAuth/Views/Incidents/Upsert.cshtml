@@ -1,35 +1,40 @@
 ﻿@model SportsPro.Models.Incident
 
 @{
-    ViewData["Title"] = "Edit";
+    var id = Url.ActionContext.RouteData.Values["id"];
+    if ( id != null)
+        ViewData["Title"] = "Update Incident";
+    else
+        ViewData["Title"] = "Add Incident";
 }
 
-<h1>Edit</h1>
-
-<h4>Incident</h4>
+<h2>@ViewData["Title"]</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IncidentID" />
+        <form asp-action="Upsert">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @if (id != null)
+                {<input type="hidden" asp-for="IncidentID" />}
             <div class="form-group">
-                <label asp-for="CustomerID" class="control-label"></label>
-                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
-                <span asp-validation-for="CustomerID" class="text-danger"></span>
+                <label asp-for="Customer.FullName" class="control-label"></label>
+                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID">
+                    <option value="" selected>Select Customer</option>
+                </select>
+                <span asp-validation-for="@Model.CustomerID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductID" class="control-label"></label>
-                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductID"></select>
-                <span asp-validation-for="ProductID" class="text-danger"></span>
+                <label asp-for="Product.Name" class="control-label"></label>
+                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductID">
+                    <option value="" selected>Select Product</option>
+                </select>
+                <span asp-validation-for="@Model.ProductID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Technician.Name" class="control-label"></label>
                 <select asp-for="TechnicianID" class="form-control" asp-items="ViewBag.TechnicianID">
                     <option value="" selected>Select Technician</option>
                 </select>
-                <span asp-validation-for="TechnicianID" class="text-danger">
-                </span>
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -52,7 +57,10 @@
                 <span asp-validation-for="DateClosed" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                @if (id != null)
+                {<input type="submit" value="Update" class="btn btn-primary" />}
+                else
+                {<input type="submit" value="Add" class="btn btn-primary" />}
             </div>
         </form>
     </div>

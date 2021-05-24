@@ -11,18 +11,27 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CustomerID" class="control-label"></label>
-                <select asp-for="CustomerID" class ="form-control" asp-items="ViewBag.CustomerID"></select>
+                <label asp-for="Customer.FullName" class="control-label"></label>
+                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID">
+                    <option value="" selected>Select Customer</option>
+                </select>
+                <span asp-validation-for="@Model.CustomerID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductID" class="control-label"></label>
-                <select asp-for="ProductID" class ="form-control" asp-items="ViewBag.ProductID"></select>
+                <label asp-for="Product.Name" class="control-label"></label>
+                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductID">
+                    <option value="" selected>Select Product</option>
+                </select>
+                <span asp-validation-for="@Model.ProductID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TechnicianID" class="control-label"></label>
-                <select asp-for="TechnicianID" class ="form-control" asp-items="ViewBag.TechnicianID"></select>
+            <div class="form-group">      
+                <label asp-for="Technician.Name" class="control-label"></label>
+                <select asp-for="TechnicianID" class="form-control" asp-items="ViewBag.TechnicianID">
+                    <option value="" selected>Select Technician</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>

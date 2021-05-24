@@ -9,13 +9,14 @@ namespace SportsPro.Models
 		[DisplayName("Incident Id#")]
 		public int IncidentID { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The Customer field is required")]
 		[DisplayName("Customer Id#")]
 		public int CustomerID { get; set; }     // foreign key property
 		public Customer Customer { get; set; }  // navigation property
 
-		[Required]
+
 		[DisplayName("Product Id#")]
+		[Required(ErrorMessage = "The Product field is required")]
 		public int ProductID { get; set; }     // foreign key property
 		public Product Product { get; set; }   // navigation property
 
