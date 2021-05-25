@@ -10,7 +10,7 @@ using SportsPro.Models;
 
 namespace SportsProAuth.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     public class IncidentsController : Controller
     {
         private readonly SportsProContext _context;
@@ -58,11 +58,12 @@ namespace SportsProAuth.Controllers
 
 
         // GET: Incidents/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", null);
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", null);
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", null);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName");
+            ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name");
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
             return View();
         }
 
@@ -81,7 +82,7 @@ namespace SportsProAuth.Controllers
             }
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "TechnicianID", incident.TechnicianID);
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
             return View(incident);
         }
 
@@ -101,11 +102,8 @@ namespace SportsProAuth.Controllers
             }
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-            if (incident.TechnicianID != null)
-                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "TechnicianID", incident.TechnicianID);
-            else
-                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "TechnicianID", null);
-            return View(incident);
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+             return View(incident);
         }
 
         // POST: Incidents/Edit/5
@@ -141,9 +139,9 @@ namespace SportsProAuth.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "Address", incident.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Email", incident.TechnicianID);
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
             return View(incident);
         }
         //edit and create in one view
@@ -158,9 +156,9 @@ namespace SportsProAuth.Controllers
         {
             if (id == null)//if id is null, then the request is to create a new incident
             {
-                ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", null);
-                ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", null);
-                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", null);
+                ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName");
+                ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name");
+                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
                 return View();
             }
             //else, we find the incident to load it
@@ -169,12 +167,9 @@ namespace SportsProAuth.Controllers
             {
                 return NotFound();
             }
-           ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
-           ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-            if (incident.TechnicianID != null)
-                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
-            else
-                ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", null);
+            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
+            ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
             return View(incident);
         }
 
@@ -267,6 +262,20 @@ namespace SportsProAuth.Controllers
             _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Technician")]
+        public IActionResult ListByTech()
+        {
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
+            return View();
+        }
+
+        [Authorize(Roles = "Technician")]
+        public IActionResult ListByTech(int id)
+        {
+            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
+            return View();
         }
 
 
