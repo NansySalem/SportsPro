@@ -41,5 +41,7 @@ namespace SportsPro.Models
 
 		[DisplayName("Customer Name")]
 		public string FullName => FirstName + " " + LastName;   // read-only property
+
+		public ICollection<Registration> Registrations { get; set; }
 	}
 }

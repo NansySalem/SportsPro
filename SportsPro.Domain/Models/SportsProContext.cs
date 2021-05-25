@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using SportsPro.Domain;
 
 namespace SportsPro.Models
 {
@@ -21,12 +20,22 @@ namespace SportsPro.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Registration>().HasKey(ba => new { ba.ProductID, ba.CustomerID });
 
-            modelBuilder.Entity<Registration>().HasNoKey().HasData(
+            // Registrations: set foreign keys 
+            modelBuilder.Entity<Registration>().HasOne(ba => ba.Product)
+                .WithMany(b => b.Registrations)
+                .HasForeignKey(ba => ba.ProductID);
+            modelBuilder.Entity<Registration>().HasOne(ba => ba.Customer)
+                .WithMany(a => a.Registrations)
+                .HasForeignKey(ba => ba.CustomerID);
+
+
+            modelBuilder.Entity<Registration>().HasData(
                 new Registration
-                {
+                {    ProductID = 1,
                     CustomerID = 1002,
-                    ProductID = 1
+                   
                 },
                 new Registration
                 {
@@ -339,7 +348,6 @@ namespace SportsPro.Models
                     DateClosed = null
                 }
             );
-
         }
     }
 }
