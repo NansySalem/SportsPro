@@ -25,6 +25,6 @@ namespace SportsPro.Models
 		public decimal YearlyPrice { get; set; }
 
 		[DisplayName("Release Date")]
-		public DateTime ReleaseDate { get; set; } = DateTime.Now;
+		public DateTime? ReleaseDate { get; set; } = DateTime.Now;
 	}
 }
