@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
 <h1>Index</h1>
 
 <p>
@@ -37,39 +42,41 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model)
-{
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @{ if (item.Technician != null)
-                    { @Html.DisplayFor(modelItem => item.Technician.Email);  }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @{ if (item.Technician != null)
+                        { @Html.DisplayFor(modelItem => item.Technician.Email);
+                    }
                     else
-                    { @Html.Display("NA"); } }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOpened)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateClosed)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IncidentID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
-            </td>
-        </tr>
-}
+                    { @Html.Display("NA");
+                } }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOpened)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateClosed)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IncidentID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
