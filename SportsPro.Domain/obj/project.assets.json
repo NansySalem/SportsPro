@@ -7183,19 +7183,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nansy\\.nuget\\packages\\": {}
+    "C:\\Users\\732779\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\732779\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
       "projectName": "SportsPro.Domain",
-      "projectPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
-      "packagesPath": "C:\\Users\\nansy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\obj\\",
+      "projectPath": "C:\\Users\\732779\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
+      "packagesPath": "C:\\Users\\732779\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\732779\\source\\repos\\SportsPro\\SportsPro.Domain\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\nansy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\732779\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7255,7 +7260,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
