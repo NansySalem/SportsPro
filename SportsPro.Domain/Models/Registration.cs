@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportsPro.Domain.Models
+namespace SportsPro.Models
 {
     public class Registration
     {

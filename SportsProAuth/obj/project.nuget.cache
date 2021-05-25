@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mx9HAZ1wYCK4nBSGEvGy1Vfr9xPkdpQRVbX+KKnTL8OPjz5obG81WSqQQHx6HyV1NrFyhp/osAK3vrvKdpwNKA==",
+  "dgSpecHash": "PLckW/6kK7bsjSqwjXvekserD4N0bDJMXGAx4NkFvEoCj9a2/tDv2S+xNGXLCdFRxk9/oCvqtgQDE5akNRCkmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\732779\\source\\repos\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
+  "projectFilePath": "C:\\Users\\732779\\Source\\Repos\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\732779\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\732779\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.6\\microsoft.aspnetcore.cryptography.internal.5.0.6.nupkg.sha512",
