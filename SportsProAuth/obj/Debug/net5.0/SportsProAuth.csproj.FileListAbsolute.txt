@@ -214,3 +214,4 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Details.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\Upsert.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\ListByTech.cshtml.g.cs
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\_techIncidents.cshtml.g.cs

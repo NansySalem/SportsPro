@@ -267,15 +267,29 @@ namespace SportsProAuth.Controllers
         [Authorize(Roles = "Technician")]
         public IActionResult ListByTech()
         {
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
-            return View();
+            var techs = _context.Technicians.ToList();
+           // ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
+            return View(techs);
         }
 
         [Authorize(Roles = "Technician")]
-        public IActionResult ListByTech(int id)
+        public IActionResult techIncidents(string id)
+
         {
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
-            return View();
+            // ToDo: validate id => true -> proceed -> display error
+
+            var parsedId = int.Parse(id);
+            var tech = _context.Technicians.SingleOrDefault(tId => tId.TechnicianID == parsedId);
+            var incidents = _context.Incidents.Where(i => i.TechnicianID == tech.TechnicianID)
+                .Include(i=> i.Customer)
+                .Include(i=> i.Product)
+                .ToList();
+
+            //ViewData["assigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == tech.TechnicianID);
+            //ViewData["unassigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == null);
+            //ViewData["otherAssigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID != null && i.TechnicianID != tech.TechnicianID);
+            
+            return PartialView("_techIncidents", incidents);
         }
 
 
