@@ -66,6 +66,7 @@ namespace SportsPro.UIApp.Controllers
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{incident.Title} added into database.";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "Address", incident.CustomerID);

@@ -9,22 +9,23 @@ using SportsPro.Models;
 
 namespace SportsPro.UIApp.Controllers
 {
-    public class ProductsController : Controller
+    public class CustomersController : Controller
     {
         private readonly SportsProContext _context;
 
-        public ProductsController(SportsProContext context)
+        public CustomersController(SportsProContext context)
         {
             _context = context;
         }
 
-        // GET: Products
+        // GET: Customers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            var sportsProContext = _context.Customers.Include(c => c.Country);
+            return View(await sportsProContext.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,40 +33,43 @@ namespace SportsPro.UIApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductID == id);
-            if (product == null)
+            var customer = await _context.Customers
+                .Include(c => c.Country)
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(customer);
         }
 
-        // GET: Products/Create
+        // GET: Customers/Create
         public IActionResult Create()
         {
+            ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductID,ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
+        public async Task<IActionResult> Create([Bind("CustomerID,FirstName,LastName,Address,City,State,PostalCode,CountryID,Phone,Email")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(customer);
                 await _context.SaveChangesAsync();
-                TempData["message"] = $"{product.Name} added into database.";
+                TempData["message"] = $"{customer.FirstName}+ {customer.LastName} added into database.";
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
+            return View(customer);
         }
 
-        // GET: Products/Edit/5
+        // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace SportsPro.UIApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            return View(product);
+            ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
+            return View(customer);
         }
 
-        // POST: Products/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductID,ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,FirstName,LastName,Address,City,State,PostalCode,CountryID,Phone,Email")] Customer customer)
         {
-            if (id != product.ProductID)
+            if (id != customer.CustomerID)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace SportsPro.UIApp.Controllers
             {
                 try
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();                    
+                    _context.Update(customer);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.ProductID))
+                    if (!CustomerExists(customer.CustomerID))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace SportsPro.UIApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
+            return View(customer);
         }
 
-        // GET: Products/Delete/5
+        // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,31 +130,32 @@ namespace SportsPro.UIApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductID == id);
-            if (product == null)
+            var customer = await _context.Customers
+                .Include(c => c.Country)
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(customer);
         }
 
-        // POST: Products/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
+            var customer = await _context.Customers.FindAsync(id);
+            _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
-            TempData["message"] = $"{product.Name} deleted from database.";
+            TempData["message"] = $"{customer.FirstName}+ {customer.LastName} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool CustomerExists(int id)
         {
-            return _context.Products.Any(e => e.ProductID == id);
+            return _context.Customers.Any(e => e.CustomerID == id);
         }
     }
 }
