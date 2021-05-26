@@ -5,51 +5,70 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOpened)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOpened)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<br />
+<nav class="nav nav-pills nav-justified">
+    <a id="all-incidents" class="nav-link active" href="" >All incidents</a>
+    <a id="unassigned-incidents" class="nav-link"  href="">Unassigned incidents</a>
+    <a id="open-incidents" class="nav-link"  href="">Open incidents</a>
+</nav>
+<br />
+<div id="incidents"> 
+   <partial name="_selected-incidents" model="@Model" />
+</div>
 
 <p>
     <a asp-action="Create">Add new incident</a> |
     <a href="../">Back</a>
 </p>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+
+    $(document).ready(() => {
+        
+        $('#all-incidents').click((e) => {
+            e.preventDefault();
+                $.ajax({
+                    method: 'GET',
+                    url: '/incidents/GetIncidents',
+                    data: { name: 'all-incidents' }
+                }).done(function (result, statusText, xhdr) {
+                    $('#incidents').html(result);
+                });
+            $('#unassigned-incidents').removeClass("active");
+            $('#all-incidents').addClass("active");
+            $('#open-incidents').removeClass("active");
+        });
+
+        $('#unassigned-incidents').click((e) => {
+            e.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: '/incidents/GetIncidents',
+                data: { name: 'unassigned-incidents' }
+            }).done(function (result, statusText, xhdr) {
+                $('#incidents').html(result);
+            });
+            $('#unassigned-incidents').addClass("active");
+            $('#all-incidents').removeClass("active");
+            $('#open-incidents').removeClass("active");
+        });
+
+        $('#open-incidents').click((e) => {
+            e.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: '/incidents/GetIncidents',
+                data: { name: 'open-incidents' }
+            }).done(function (result, statusText, xhdr) {
+                $('#incidents').html(result);
+            });
+            $('#unassigned-incidents').removeClass("active");
+            $('#all-incidents').removeClass("active");
+            $('#open-incidents').addClass("active");
+        });
+
+
+
+    });
+</script>

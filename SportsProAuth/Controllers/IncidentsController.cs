@@ -26,8 +26,44 @@ namespace SportsProAuth.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
-            var sportsProContext = _context.Incidents.Include(i => i.Customer).Include(i => i.Product).Include(i => i.Technician);
+            var sportsProContext = _context.Incidents.Include(i => i.Customer)
+                                       .Include(i => i.Product)
+                                       .Include(i => i.Technician);
             return View(await sportsProContext.ToListAsync());
+        }
+        public async Task<IActionResult> GetIncidents(string name)
+        {
+            if (name == "all-incidents")
+            {
+                var sportsProContext = _context.Incidents.Include(i => i.Customer)
+                                       .Include(i => i.Product)
+                                       .Include(i => i.Technician);
+                return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
+            }
+            else if (name == "unassigned-incidents")
+            {
+                var sportsProContext = _context.Incidents.Include(i => i.Customer)
+                                    .Include(i => i.Product)
+                                    .Include(i => i.Technician).Where(t => t.TechnicianID == null);
+                return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
+            }
+            else if (name == "open-incidents")
+            {
+                var sportsProContext = _context.Incidents.Include(i => i.Customer)
+                                    .Include(i => i.Product)
+                                    .Include(i => i.Technician)
+                                    .Where(d => d.DateClosed == null);
+                return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
+            }
+            else
+                return View();
+
+           
+
+            //ViewData["assigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == tech.TechnicianID);
+            //ViewData["unassigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == null);
+            //ViewData["otherAssigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID != null && i.TechnicianID != tech.TechnicianID);
+
         }
 
         [Authorize(Roles = "Administrator")]
@@ -288,9 +324,6 @@ namespace SportsProAuth.Controllers
                 .Include(i=> i.Product)
                 .ToList();
 
-            //ViewData["assigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == tech.TechnicianID);
-            //ViewData["unassigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == null);
-            //ViewData["otherAssigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID != null && i.TechnicianID != tech.TechnicianID);
             
             return PartialView("_techIncidents", incidents);
         }
