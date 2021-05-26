@@ -10,10 +10,12 @@ using SportsPro.Models;
 
 namespace SportsProAuth.Controllers
 {
-    //[Authorize(Roles = "Administrator")]
+ 
     public class IncidentsController : Controller
     {
+
         private readonly SportsProContext _context;
+
 
         public IncidentsController(SportsProContext context)
         {
@@ -21,16 +23,14 @@ namespace SportsProAuth.Controllers
         }
 
         // GET: Incidents
-        
-        //[Authorize(Roles = "Technician")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             var sportsProContext = _context.Incidents.Include(i => i.Customer).Include(i => i.Product).Include(i => i.Technician);
             return View(await sportsProContext.ToListAsync());
         }
 
-        // GET: Incidents/Details/5
-      //  [Authorize(Roles = "Technician")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -72,6 +72,7 @@ namespace SportsProAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("IncidentID,CustomerID,ProductID,TechnicianID,Title,Description,DateOpened,DateClosed")] Incident incident)
         {
             if (ModelState.IsValid)
@@ -87,7 +88,7 @@ namespace SportsProAuth.Controllers
         }
 
         // GET: Incidents/Edit/5
-       // [Authorize(Roles = "Technician")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -111,7 +112,7 @@ namespace SportsProAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-      //  [Authorize(Roles = "Technician")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("IncidentID,CustomerID,ProductID,TechnicianID,Title,Description,DateOpened,DateClosed")] Incident incident)
         {
             if (id != incident.IncidentID)
@@ -233,6 +234,7 @@ namespace SportsProAuth.Controllers
         }
 
         // GET: Incidents/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -256,6 +258,7 @@ namespace SportsProAuth.Controllers
         // POST: Incidents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var incident = await _context.Incidents.FindAsync(id);
@@ -291,6 +294,65 @@ namespace SportsProAuth.Controllers
             
             return PartialView("_techIncidents", incidents);
         }
+
+        // GET: Incidents/Edit/5
+        [Authorize(Roles = "Technician, Administrator")]
+        public async Task<IActionResult> techEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var incident = await _context.Incidents.FindAsync(id);
+            if (incident == null)
+            {
+                return NotFound();
+            }
+            ViewData["CustomerName"] = _context.Customers.SingleOrDefault(c=> incident.CustomerID == c.CustomerID).FullName;
+            ViewData["ProductName"] = _context.Products.SingleOrDefault(p => incident.ProductID == p.ProductID).Name;
+            ViewData["TechnicianName"] = _context.Technicians.SingleOrDefault(t => incident.TechnicianID == t.TechnicianID).Name;
+            return View(incident);
+        }
+
+        // POST: Incidents/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Technician, Administrator")]
+        public async Task<IActionResult> techEdit(int id, [Bind("IncidentID,CustomerID,ProductID,TechnicianID,Title,Description,DateOpened,DateClosed")] Incident incident)
+        {
+            if (id != incident.IncidentID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(incident);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!IncidentExists(incident.IncidentID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return Redirect("~/Incidents/ListByTech");
+            }
+            
+
+            return View(incident);
+        }
+
 
 
     }

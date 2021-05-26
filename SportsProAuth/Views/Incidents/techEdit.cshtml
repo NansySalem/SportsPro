@@ -1,0 +1,63 @@
+﻿@model SportsPro.Models.Incident
+
+@{
+    ViewData["Title"] = "Incident Update";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="techEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IncidentID" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input readonly asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Technician.Name" class="control-label"></label>
+                <span readonly class="form-control"> @ViewBag.TechnicianName</span>
+                <input type="hidden" asp-for="TechnicianID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.FullName" class="control-label"></label>
+                <span readonly class="form-control"> @ViewBag.CustomerName</span>
+                <input type="hidden" asp-for="CustomerID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <span readonly class="form-control"> @ViewBag.ProductName</span>
+                <input type="hidden" asp-for="ProductID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOpened" class="control-label"></label>
+                <input readonly asp-for="DateOpened" class="form-control" />
+                <span asp-validation-for="DateOpened" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateClosed" class="control-label"></label>
+                <input asp-for="DateClosed" class="form-control" />
+                <span asp-validation-for="DateClosed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListByTech">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
