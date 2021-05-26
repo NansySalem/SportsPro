@@ -61,6 +61,7 @@ namespace SportsProAuth.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{product.Name} added to the database.";
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -143,6 +144,7 @@ namespace SportsProAuth.Controllers
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{product.Name} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 

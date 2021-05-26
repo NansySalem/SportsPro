@@ -92,6 +92,26 @@ namespace SportsProAuth
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "customers",
+                    pattern: "customers/",
+                    new { controller = "Customers", action = "Details" });
+
+                endpoints.MapControllerRoute(
+                   name: "products",
+                   pattern: "products/",
+                   new { controller = "Products", action = "Details" });
+                
+                endpoints.MapControllerRoute(
+                    name: "incidents",
+                    pattern: "incidents/",
+                    new { controller = "Incidents", action = "Details" });
+
+                endpoints.MapControllerRoute(
+                    name: "technicians",
+                    pattern: "technicians/",
+                    new { controller = "Technicians", action = "Details" });
             });
         }
     }

@@ -67,6 +67,7 @@ namespace SportsProAuth.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
+            TempData["message"] = $"{customer.FullName} added to database.";
             return View(customer);
         }
 
@@ -117,6 +118,7 @@ namespace SportsProAuth.Controllers
                         throw;
                     }
                 }
+                TempData["message"] = $"{customer.FullName} has been edited.";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
@@ -150,6 +152,7 @@ namespace SportsProAuth.Controllers
             var customer = await _context.Customers.FindAsync(id);
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{customer.FullName} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 

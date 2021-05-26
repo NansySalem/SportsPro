@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {}
+    "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {
+    "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
         "projectName": "SportsPro.Domain",
-        "projectPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
-        "packagesPath": "C:\\Users\\nansy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\obj\\",
+        "projectPath": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj",
+        "packagesPath": "C:\\Users\\dongd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nansy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dongd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -74,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

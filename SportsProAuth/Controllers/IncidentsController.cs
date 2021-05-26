@@ -83,6 +83,7 @@ namespace SportsProAuth.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
             ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+            TempData["message"] = $"{incident.Title} added to database.";
             return View(incident);
         }
 
@@ -207,6 +208,7 @@ namespace SportsProAuth.Controllers
                                 throw;
                             }
                         }
+                      
                         return RedirectToAction(nameof(Index));
                     }
                     ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
@@ -221,7 +223,7 @@ namespace SportsProAuth.Controllers
                 if (ModelState.IsValid)
                 {
                     _context.Add(incident);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();                 
                     return RedirectToAction(nameof(Index));
                 }
                 ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
@@ -261,6 +263,7 @@ namespace SportsProAuth.Controllers
             var incident = await _context.Incidents.FindAsync(id);
             _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{incident.Title} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 

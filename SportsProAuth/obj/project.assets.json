@@ -7871,19 +7871,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nansy\\.nuget\\packages\\": {}
+    "C:\\Users\\dongd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
+      "projectUniqueName": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
       "projectName": "SportsProAuth",
-      "projectPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
-      "packagesPath": "C:\\Users\\nansy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsProAuth\\obj\\",
+      "projectPath": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsProAuth\\SportsProAuth.csproj",
+      "packagesPath": "C:\\Users\\dongd\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsProAuth\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nansy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dongd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7897,8 +7897,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {
-              "projectPath": "C:\\Users\\nansy\\source\\repos\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj"
+            "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj": {
+              "projectPath": "C:\\Users\\dongd\\Desktop\\Git Local\\SportsPro\\SportsPro.Domain\\SportsPro.Domain.csproj"
             }
           }
         }
@@ -7966,7 +7966,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

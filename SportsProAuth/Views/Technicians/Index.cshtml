@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Technician Manager";
 }
-
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
 <h2>@ViewData["Title"]</h2>
 
 
@@ -23,23 +28,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TechnicianID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.TechnicianID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TechnicianID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TechnicianID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

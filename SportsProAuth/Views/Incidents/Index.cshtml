@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Incident Manager";
 }
-
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
 <h2>@ViewData["Title"]</h2>
 
 
@@ -26,26 +31,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOpened)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOpened)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IncidentID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IncidentID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
