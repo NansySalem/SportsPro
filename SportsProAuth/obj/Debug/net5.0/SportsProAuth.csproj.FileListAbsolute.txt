@@ -223,3 +223,10 @@ C:\Users\732779\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProA
 C:\Users\732779\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\ref\SportsProAuth.dll
 C:\Users\732779\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProAuth.pdb
 C:\Users\732779\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProAuth.genruntimeconfig.cache
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.Mvc.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.Razor.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.Helpers.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\System.Web.WebPages.dll
+C:\Users\732779\source\repos\SportsPro\SportsProAuth\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
