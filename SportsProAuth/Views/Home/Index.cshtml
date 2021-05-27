@@ -7,16 +7,16 @@
     {
     <h1>Admin</h1>
     <div class="list-group">
-        <a asp-controller="Products" asp-action="Index"
-            class="list-group-item">Manage Products</a>
-        <a asp-controller="Technicians" asp-action="Index"
-            class="list-group-item">Manage Technicians</a>
-        <a asp-controller="Customers" asp-action="Index"
-            class="list-group-item">Manage Customers</a>
         <a asp-controller="Incidents" asp-action="Index"
-            class="list-group-item">Manage Incidents</a>
+           class="list-group-item">Incident Manager</a>
+        <a asp-controller="Products" asp-action="Index"
+           class="list-group-item">Product Manager</a>
+        <a asp-controller="Technicians" asp-action="Index"
+           class="list-group-item">Technician Manager</a>
+        <a asp-controller="Customers" asp-action="Index"
+           class="list-group-item">Customer Manager</a>
         <a asp-controller="Registrations" asp-action="Index"
-            class="list-group-item">Manage Registrations</a>
+           class="list-group-item">Registration Manager</a>
     </div> } }
 
 @{ if (User.IsInRole("Technician"))
@@ -24,7 +24,7 @@
     <h1>Technicians</h1>
                     <div class="list-group">
                         <a asp-controller="Incidents" asp-action="ListByTech"
-                           class="list-group-item">Update Incident</a>
+                           class="list-group-item">Incident Manager</a>
                     </div>
         }
     }
