@@ -324,7 +324,7 @@ namespace SportsProAuth.Controllers
                 .Include(i=> i.Product)
                 .ToList();
 
-            
+            ViewData["TechnicianName"] = tech.Name;
             return PartialView("_techIncidents", incidents);
         }
 

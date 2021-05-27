@@ -6,11 +6,8 @@
 }
 <h2>@ViewData["Title"]</h2>
 <hr />
-<div id="uxErrorMsg" style="height:15px;">
-</div>
 <div class="row">
     <div class="col-md-4">
-        <div asp-validation-summary="All" class="text-danger"></div>
         <form>
             <div class="form-group">
                 <label class="control-label"></label>
@@ -18,22 +15,26 @@
                     <option value="" selected>Select Technician</option>
                 </select>
             </div>
-            <button id="btnClick" value="Find Incidents" class="mb-5 mt-3 btn btn-primary" >Find Incidents</button>
+            <button id="btn-click" value="Find Incidents" class="mb-2 mt-1 btn btn-primary" >Find Incidents</button>
         </form>
     </div>
 </div>
-
+@*div to be updated with partial view based on user selection*@
 <div id="uxIncidents">
+</div>
+<div id="uxErrorMsg" style="height:50px;">
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
-   
+   //dynamically loading partial view depending on user selection
     $(document).ready(() => {
-        $('#btnClick').click((e) => {
+        $('#btn-click').click((e) => {
             e.preventDefault();
             var techId = $("#uxTechSelection").val();
-            if (parseInt(techId) > 0) 
+            if (parseInt(techId) > 0) {
+                //saving selected technician id to be used later 
+                sessionStorage.setItem("techId", techId);
                 $.ajax({
                     method: 'GET',
                     url: '/incidents/techIncidents',
@@ -42,9 +43,29 @@
                     $('#uxIncidents').html(result);
                     $('#uxErrorMsg').html("");
                 });
+            }
             else
+            {
                 $('#uxErrorMsg').html('<p class="text-danger">Please choose a technician name</p>');
+                $('#uxIncidents').html("");
+            }
             
         });
     });
+//retrieving active technician through session
+    $(document).ready(() => {
+        let techId = sessionStorage.getItem("techId");
+        if (techId != null)
+        {       $.ajax({
+                method: 'GET',
+                url: '/incidents/techIncidents',
+                data: { id: techId }
+            }).done(function (result, statusText, xhdr) {
+                $('#uxIncidents').html(result);
+                $('#uxErrorMsg').html("");
+
+            });
+            $('#uxTechSelection').val(techId);
+        }
+        });
 </script>
