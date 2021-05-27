@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 namespace SportsPro.Models
 {
     public class Registration
-    {
+    {  
+        public int RegistrationID { get; set; }
+        
         public int CustomerID { get; set; }
         public int ProductID { get; set; }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsPro.Models;
 
-namespace SportsPro.Migrations
+namespace SportsPro.Domain.Migrations
 {
     [DbContext(typeof(SportsProContext))]
     partial class SportsProContextModelSnapshot : ModelSnapshot
@@ -546,53 +546,67 @@ namespace SportsPro.Migrations
 
             modelBuilder.Entity("SportsPro.Models.Registration", b =>
                 {
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
+                    b.Property<int>("RegistrationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductID", "CustomerID");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("RegistrationID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("ProductID");
 
                     b.ToTable("Registrations");
 
                     b.HasData(
                         new
                         {
-                            ProductID = 1,
-                            CustomerID = 1002
+                            RegistrationID = 1,
+                            CustomerID = 1002,
+                            ProductID = 1
                         },
                         new
                         {
-                            ProductID = 2,
-                            CustomerID = 1004
+                            RegistrationID = 2,
+                            CustomerID = 1004,
+                            ProductID = 2
                         },
                         new
                         {
-                            ProductID = 3,
-                            CustomerID = 1006
+                            RegistrationID = 3,
+                            CustomerID = 1006,
+                            ProductID = 3
                         },
                         new
                         {
-                            ProductID = 4,
-                            CustomerID = 1008
+                            RegistrationID = 4,
+                            CustomerID = 1008,
+                            ProductID = 4
                         },
                         new
                         {
-                            ProductID = 5,
-                            CustomerID = 1010
+                            RegistrationID = 5,
+                            CustomerID = 1010,
+                            ProductID = 5
                         },
                         new
                         {
-                            ProductID = 6,
-                            CustomerID = 1012
+                            RegistrationID = 6,
+                            CustomerID = 1012,
+                            ProductID = 6
                         },
                         new
                         {
-                            ProductID = 7,
-                            CustomerID = 1015
+                            RegistrationID = 7,
+                            CustomerID = 1015,
+                            ProductID = 7
                         });
                 });
 

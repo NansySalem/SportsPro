@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SportsPro.Models.Registration>
+
+@{
+    ViewData["Title"] = "Registration Manager";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RegistrationID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.RegistrationID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Add new Registration</a> |
+    <a href="../">Back</a>
+</p>

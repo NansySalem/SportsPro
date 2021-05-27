@@ -20,50 +20,49 @@ namespace SportsPro.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Registration>().HasKey(ba => new { ba.ProductID, ba.CustomerID });
-
-            // Registrations: set foreign keys 
-            modelBuilder.Entity<Registration>().HasOne(ba => ba.Product)
-                .WithMany(b => b.Registrations)
-                .HasForeignKey(ba => ba.ProductID);
-            modelBuilder.Entity<Registration>().HasOne(ba => ba.Customer)
-                .WithMany(a => a.Registrations)
-                .HasForeignKey(ba => ba.CustomerID);
-
-
+            
             modelBuilder.Entity<Registration>().HasData(
                 new Registration
-                {    ProductID = 1,
+
+                {
+                    RegistrationID = 1,
                     CustomerID = 1002,
+                    ProductID = 1,
                    
                 },
                 new Registration
                 {
+                    RegistrationID = 2,
                     CustomerID = 1004,
                     ProductID = 2
                 },
                 new Registration
                 {
+                    RegistrationID = 3,
                     CustomerID = 1006,
                     ProductID = 3
                 },
                 new Registration
                 {
+                    RegistrationID = 4,
                     CustomerID = 1008,
                     ProductID = 4
                 },
                 new Registration
                 {
+                    RegistrationID = 5,
                     CustomerID = 1010,
                     ProductID = 5
                 },
                 new Registration
                 {
+                    RegistrationID = 6,
                     CustomerID = 1012,
                     ProductID = 6
                 },
                 new Registration
                 {
+                    RegistrationID = 7,
                     CustomerID = 1015,
                     ProductID = 7
                 });
