@@ -208,11 +208,11 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
-C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\Index - Copy.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Products\Details.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Technicians\Details.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\Upsert.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\ListByTech.cshtml.g.cs
-C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\_techIncidents.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\techEdit.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\_selected-incidents.cshtml.g.cs
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\_techIncidents.cshtml.g.cs
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\_selected-incidents.cshtml.g.cs

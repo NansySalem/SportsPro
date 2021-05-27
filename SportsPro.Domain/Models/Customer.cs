@@ -28,6 +28,7 @@ namespace SportsPro.Models
 
 		[Required]
 		[DisplayName("Postal Code")]
+		[RegularExpression(@" ^\(? ([0 - 9]{3})\)?[-]? ([0 - 9]{3})[-]? ([0 - 9]{ 4})$")]
 		public string PostalCode { get; set; }
 
 		[Required]
