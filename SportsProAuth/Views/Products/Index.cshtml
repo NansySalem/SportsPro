@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model IEnumerable<SportsPro.Models.Product>
 
 @{
@@ -54,3 +55,67 @@
     <a href="../">Back</a>
 </p>
 
+=======
+﻿@model IEnumerable<SportsPro.Models.Product>
+
+@{
+    ViewData["Title"] = "Product Manager";
+}
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
+<h2>@ViewData["Title"]</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearlyPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearlyPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Add new product</a> |
+    <a href="../">Back</a>
+</p>
+
+>>>>>>> origin/Doris

@@ -59,6 +59,7 @@ namespace SportsPro.UIApp.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{product.Name} added into database.";
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -97,7 +98,7 @@ namespace SportsPro.UIApp.Controllers
                 try
                 {
                     _context.Update(product);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -141,6 +142,7 @@ namespace SportsPro.UIApp.Controllers
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{product.Name} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 

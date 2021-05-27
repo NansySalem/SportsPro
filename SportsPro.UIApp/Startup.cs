@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 using Microsoft.EntityFrameworkCore;
 using SportsPro.Models;
+using DocumentFormat.OpenXml.ExtendedProperties;
 
 namespace SportsPro
 {
@@ -55,10 +56,42 @@ namespace SportsPro
 
             app.UseEndpoints(endpoints =>
             {
+                //customize url --Doris 
+                endpoints.MapControllerRoute(
+                    name: "customers",
+                    pattern: "customers/",
+                    new { controller ="Customers", action ="Details"});
+                
+                endpoints.MapControllerRoute(
+                    name: "incidents",
+                    pattern: "incidents/",
+                    new { controller = "Incidents", action = "Details" });
+
+                endpoints.MapControllerRoute(
+                    name: "technicians",
+                    pattern: "technicians/",
+                    new { controller = "Technicians", action = "Details" });
+               
+                endpoints.MapControllerRoute(
+                   name: "products",
+                   pattern: "products/",
+                   new { controller = "Products", action = "Details" });
+                
+                //!!!Haven't created a about page yet!!!
+                //endpoints.MapControllerRoute(
+                //   name: "about",
+                //   pattern: "about/",
+                //   new { controller = "Home", action = "About" });
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
             });
+          
+           
         }
     }
 }

@@ -59,6 +59,7 @@ namespace SportsPro.UIApp.Controllers
             {
                 _context.Add(technician);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{technician.Name} added into database.";
                 return RedirectToAction(nameof(Index));
             }
             return View(technician);
@@ -141,6 +142,7 @@ namespace SportsPro.UIApp.Controllers
             var technician = await _context.Technicians.FindAsync(id);
             _context.Technicians.Remove(technician);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{technician.Name} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 
