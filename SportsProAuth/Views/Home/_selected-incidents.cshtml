@@ -6,16 +6,16 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Product.Name)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Title)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Customer)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Product)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.DateOpened)
+                </th>
+                <th>
+                    Status
                 </th>
                 <th></th>
             </tr>
@@ -25,19 +25,31 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Customer.FullName)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DateOpened)
                     </td>
+                    @if (item.DateClosed == null)
+                    {
+                        if (DateTime.Now.Subtract(item.DateOpened).TotalDays > 30)
+                        {
+                            <td style="color:red; font-weight:bold"> Open </td>
+ }
+                        else
+                        {
+                            <td> Open </td>
+}
+                    }
+                    else
+                    {
+                        <td> Closed </td>
+}
                     <td>
-                        <a href="Incidents/techEdit/@item.IncidentID">Edit</a>
+                        <a href="Incidents/Upsert/@item.IncidentID">Edit</a>
                         @*<a asp-action="Incidents/Delete" asp-route-id="@item.IncidentID">Delete</a>*@
                     </td>
                 </tr>

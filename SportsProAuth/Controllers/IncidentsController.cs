@@ -255,7 +255,7 @@ namespace SportsProAuth.Controllers
                                 throw;
                             }
                         }
-                        return RedirectToAction(nameof(Index));
+                        return Redirect("https://localhost:44357/");
                     }
                     ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
                     ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
@@ -392,6 +392,8 @@ namespace SportsProAuth.Controllers
                     }
                 }
                 return Redirect("~/Incidents/ListByTech");
+              
+
             }
 
 

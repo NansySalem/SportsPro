@@ -80,4 +80,7 @@ h2{
     color: #d7aa17;
     font-weight: bold;
 }*/
-
+.background-image{
+    background-image:url('../img/sport-wallpaper-1152x720.jpg');
+    height:600px;
+}

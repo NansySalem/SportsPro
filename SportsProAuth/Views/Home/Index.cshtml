@@ -2,8 +2,22 @@
 @{ ViewData["Title"] = "Dashboard"; }
 
 @if (!User.Identity.IsAuthenticated)
-{<h1>SportsPro Technical Support</h1>
-    <p>Sports management software for the sports enthusiast</p>
+{
+    <!-- Jumbotron -->
+    <div class="p-5 text-center rounded-3 background-image">
+
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">SportsPro Technical Support</h1>
+                    <h4 class="mb-3">Sports management software for the sports enthusiast</h4>
+                    <a class="btn btn-outline-light btn-lg" href="#!" role="button">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+
 }
 
 
@@ -73,7 +87,7 @@
             $('#unassigned-incidents').removeClass("active");
             $('#all-incidents').addClass("active");
             $('#open-incidents').removeClass("active");
-            });
+        });
 
 
     });
