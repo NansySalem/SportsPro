@@ -1,9 +1,16 @@
-﻿@model IEnumerable<SportsPro.Models.Incident>
+
+@model IEnumerable<SportsPro.Models.Incident>
 
 @{
     ViewData["Title"] = "Incident Manager";
 }
 
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
 <h2>@ViewData["Title"]</h2>
 <br />
 <nav class="nav nav-pills nav-justified">
@@ -17,7 +24,7 @@
 </div>
 
 <p>
-    <a asp-action="Create">Add new incident</a> |
+    <a asp-action="Upsert">Add new incident</a> |
     <a href="../">Back</a>
 </p>
 

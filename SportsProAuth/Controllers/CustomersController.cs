@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportsPro.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SportsProAuth.Controllers
 {
@@ -26,6 +25,18 @@ namespace SportsProAuth.Controllers
             var sportsProContext = _context.Customers.Include(c => c.Country);
             return View(await sportsProContext.ToListAsync());
         }
+
+        //public JsonResult CheckEmail(String Email)
+        //{​​​​​​​
+        //    int count = _context.Customers.Where(o => o.Email.Equals(Email)).Count();
+        //    bool hasEmail = count > 0;
+        //    if (hasEmail)
+        //        return Json($"Email address {​​​​​​​Email}​​​​​​​ is already registered");
+        //    else
+        //    {​​​​​​​
+        //        return Json(true);
+        //    }​​​​​​​
+        //}​​​​​​​
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,6 +75,7 @@ namespace SportsProAuth.Controllers
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{customer.FirstName} {customer.LastName} added into database.";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CountryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", customer.CountryID);
@@ -150,6 +162,7 @@ namespace SportsProAuth.Controllers
             var customer = await _context.Customers.FindAsync(id);
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"The customer {customer.FirstName} {customer.LastName} was deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 

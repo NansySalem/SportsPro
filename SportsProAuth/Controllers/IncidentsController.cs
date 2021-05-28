@@ -10,7 +10,7 @@ using SportsPro.Models;
 
 namespace SportsProAuth.Controllers
 {
- 
+
     public class IncidentsController : Controller
     {
 
@@ -58,7 +58,7 @@ namespace SportsProAuth.Controllers
             else
                 return View();
 
-           
+
 
             //ViewData["assigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == tech.TechnicianID);
             //ViewData["unassigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == null);
@@ -140,7 +140,7 @@ namespace SportsProAuth.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
             ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
-             return View(incident);
+            return View(incident);
         }
 
         // POST: Incidents/Edit/5
@@ -307,7 +307,7 @@ namespace SportsProAuth.Controllers
         public IActionResult ListByTech()
         {
             var techs = _context.Technicians.ToList();
-           // ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
+            // ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
             return View(techs);
         }
 
@@ -320,8 +320,8 @@ namespace SportsProAuth.Controllers
             var parsedId = int.Parse(id);
             var tech = _context.Technicians.SingleOrDefault(tId => tId.TechnicianID == parsedId);
             var incidents = _context.Incidents.Where(i => i.TechnicianID == tech.TechnicianID)
-                .Include(i=> i.Customer)
-                .Include(i=> i.Product)
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
                 .ToList();
 
             ViewData["TechnicianName"] = tech.Name;
@@ -342,7 +342,7 @@ namespace SportsProAuth.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerName"] = _context.Customers.SingleOrDefault(c=> incident.CustomerID == c.CustomerID).FullName;
+            ViewData["CustomerName"] = _context.Customers.SingleOrDefault(c => incident.CustomerID == c.CustomerID).FullName;
             ViewData["ProductName"] = _context.Products.SingleOrDefault(p => incident.ProductID == p.ProductID).Name;
             ViewData["TechnicianName"] = _context.Technicians.SingleOrDefault(t => incident.TechnicianID == t.TechnicianID).Name;
             return View(incident);
@@ -381,7 +381,7 @@ namespace SportsProAuth.Controllers
                 }
                 return Redirect("~/Incidents/ListByTech");
             }
-            
+
 
             return View(incident);
         }

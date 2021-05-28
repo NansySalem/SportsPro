@@ -1,9 +1,16 @@
-﻿@model IEnumerable<SportsPro.Models.Product>
+
+﻿
+@model IEnumerable<SportsPro.Models.Product>
 
 @{
     ViewData["Title"] = "Product Manager";
 }
-
+@if (TempData.Keys.Contains("message"))
+{
+    <h4 class="alert alert-primary text-center p-2">
+        @TempData["message"]
+    </h4>
+}
 <h2>@ViewData["Title"]</h2>
 
 
@@ -26,31 +33,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearlyPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearlyPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 <p>
-    <a asp-action="Create">Add new product</a> | 
+    <a asp-action="Create">Add new product</a> |
     <a href="../">Back</a>
 </p>
+
 

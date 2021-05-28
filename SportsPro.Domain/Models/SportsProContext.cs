@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace SportsPro.Models
 {
@@ -9,6 +9,7 @@ namespace SportsPro.Models
             : base(options)
         { }
 
+        public DbSet<Registration> Registrations { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Technician> Technicians { get; set; }
         public DbSet<Country> Countries { get; set; }
@@ -17,6 +18,55 @@ namespace SportsPro.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration
+
+                {
+                    RegistrationID = 1,
+                    CustomerID = 1002,
+                    ProductID = 1,
+                   
+                },
+                new Registration
+                {
+                    RegistrationID = 2,
+                    CustomerID = 1004,
+                    ProductID = 2
+                },
+                new Registration
+                {
+                    RegistrationID = 3,
+                    CustomerID = 1006,
+                    ProductID = 3
+                },
+                new Registration
+                {
+                    RegistrationID = 4,
+                    CustomerID = 1008,
+                    ProductID = 4
+                },
+                new Registration
+                {
+                    RegistrationID = 5,
+                    CustomerID = 1010,
+                    ProductID = 5
+                },
+                new Registration
+                {
+                    RegistrationID = 6,
+                    CustomerID = 1012,
+                    ProductID = 6
+                },
+                new Registration
+                {
+                    RegistrationID = 7,
+                    CustomerID = 1015,
+                    ProductID = 7
+                });
+
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
@@ -251,7 +301,6 @@ namespace SportsPro.Models
                 }
             );
 
-
             modelBuilder.Entity<Incident>().HasData(
                 new Incident
                 {
@@ -281,7 +330,7 @@ namespace SportsPro.Models
                     CustomerID = 1015,
                     ProductID = 6,
                     TechnicianID = 15,
-                    Title = "Could not install",                    
+                    Title = "Could not install",
                     Description = "Setup failed with code 104.",
                     DateOpened = DateTime.Parse("2020-01-08"),
                     DateClosed = DateTime.Parse("2020-01-10")
@@ -292,7 +341,7 @@ namespace SportsPro.Models
                     CustomerID = 1010,
                     ProductID = 3,
                     TechnicianID = null,
-                    Title = "Error launching program",                    
+                    Title = "Error launching program",
                     Description = "Program fails with error code 510, unable to open database.",
                     DateOpened = DateTime.Parse("2020-01-10"),
                     DateClosed = null
