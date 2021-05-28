@@ -187,7 +187,6 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Customers\Edit.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Customers\Index.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
-C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\Index - Copy.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Home\_selected-incidents.cshtml.g.cs
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Views\Incidents\Create.cshtml.g.cs
@@ -232,3 +231,4 @@ C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProAu
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\ref\SportsProAuth.dll
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProAuth.pdb
 C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\SportsProAuth.genruntimeconfig.cache
+C:\Users\nansy\source\repos\SportsPro\SportsProAuth\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs

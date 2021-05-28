@@ -10,16 +10,16 @@
     <h4>Registration</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Customer)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Customer.Address)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Name)
         </dd>
     </dl>
@@ -28,3 +28,12 @@
     <a asp-action="Edit" asp-route-id="@Model.RegistrationID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').addClass("active");
+    $('#customer').removeClass("active");
+</script>

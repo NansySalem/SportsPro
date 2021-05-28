@@ -11,7 +11,6 @@
         @TempData["message"]
     </h4>
 }
-<h2>@ViewData["Title"]</h2>
 
 
 <table class="table">
@@ -61,5 +60,11 @@
     <a asp-action="Create">Add new product</a> |
     <a href="../">Back</a>
 </p>
-
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').addClass("active");
+    $('#registration').removeClass("active");
+    $('#customer').removeClass("active");
+</script>

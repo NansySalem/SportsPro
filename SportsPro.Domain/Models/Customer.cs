@@ -10,40 +10,37 @@ namespace SportsPro.Models
     {
         public int CustomerID { get; set; }
         [Required]
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
+        [StringLength(51, MinimumLength = 5, ErrorMessage = "Please enter a value between 5-50 characters")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
 
 
         [Required]
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
+        [StringLength(51, MinimumLength = 1, ErrorMessage = "Please enter a value between 1-50 characters")]
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
 
 
         [Required]
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
         [DisplayName("Address")]
         public string Address { get; set; }
 
 
 
         [Required]
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
-        public string City { get; set; }
+         public string City { get; set; }
 
 
 
         [Required]
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
         public string State { get; set; }
 
 
 
         [Required]
-        [StringLength(21, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 21.")]
+        [RegularExpression(@"(^(?!.*[DFIOQUdfioqu])([A-VXYa-vxy][0-9][A-Za-z])[ -]?([0-9][a-zA-Z][0-9])$)|(^([0-9]{5})[ :-]?([0-9]{4})?$)", ErrorMessage = "{0} is not a valid postal code")]
         [DisplayName("Postal Code")]
         public string PostalCode { get; set; }
 
@@ -56,12 +53,12 @@ namespace SportsPro.Models
 
 
 
-        //[RegularExpression(@"^\(\d{3}\)\s\d{3}-\d{4}", ErrorMessage = "Entered phone format is not valid. Please follow(999)999-9999")]
+       [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} is not a valid postal code")]
         public string Phone { get; set; }
 
 
 
-        [StringLength(51, MinimumLength = 1, ErrorMessage = "The field must be a string with a minimum length of 1 and a maximum length of 51.")]
+        [StringLength(51, ErrorMessage = "Invalid email")]
         [Required]
         [DataType(DataType.EmailAddress)]
        

@@ -24,7 +24,7 @@ namespace SportsProAuth.Controllers
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated && User.IsInRole("Technician"))
+            if (User.Identity.IsAuthenticated /*&& User.IsInRole("Technician")*/)
             {
                 var incidents = _context.Incidents
                     .Include(i => i.Customer)

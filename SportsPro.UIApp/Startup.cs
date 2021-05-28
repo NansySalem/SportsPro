@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 
 using Microsoft.EntityFrameworkCore;
 using SportsPro.Models;
-using DocumentFormat.OpenXml.ExtendedProperties;
 
 namespace SportsPro
 {

@@ -4,9 +4,9 @@
     ViewData["Title"] = "Add new Registration";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["Title"]</h4>
 
-<hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -39,3 +39,12 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').addClass("active");
+    $('#customer').removeClass("active");
+</script>

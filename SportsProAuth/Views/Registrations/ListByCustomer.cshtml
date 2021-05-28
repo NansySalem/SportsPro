@@ -5,8 +5,7 @@
     var custs = new SelectList(Model, "CustomerID", "FullName");
     var cust = Model.First();
 }
-<h2>@ViewData["Title"]</h2>
-<hr />
+<h4>@ViewData["Title"]</h4>
 <p>@ViewBag.Message</p>
 <div class="row">
     <div class="col-md-4">
@@ -40,4 +39,13 @@
             });
         });
     });
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').addClass("active");
+    $('#customer').removeClass("active");
 </script>

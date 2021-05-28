@@ -37,8 +37,8 @@
                         @Html.DisplayFor(modelItem => item.DateOpened)
                     </td>
                     <td>
-                        <a asp-action="Incidents/techEdit" asp-route-id="@item.IncidentID">Edit</a> |
-                        <a asp-action="Incidents/Delete" asp-route-id="@item.IncidentID">Delete</a>
+                        <a href="Incidents/techEdit/@item.IncidentID">Edit</a>
+                        @*<a asp-action="Incidents/Delete" asp-route-id="@item.IncidentID">Delete</a>*@
                     </td>
                 </tr>
             }

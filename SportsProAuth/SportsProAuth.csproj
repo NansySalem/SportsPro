@@ -23,4 +23,8 @@
     <ProjectReference Include="..\SportsPro.Domain\SportsPro.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>

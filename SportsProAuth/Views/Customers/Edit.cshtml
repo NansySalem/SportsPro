@@ -4,8 +4,8 @@
     ViewData["Title"] = "Update customer";
 }
 
-<h2>@ViewData["Title"]</h2>
-<hr />
+<h4>@ViewData["Title"]</h4>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -72,3 +72,11 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').removeClass("active");
+    $('#customer').addClass("active");
+</script>

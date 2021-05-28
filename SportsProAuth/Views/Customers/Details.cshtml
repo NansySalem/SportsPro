@@ -4,10 +4,9 @@
     ViewData["Title"] = "Customer Details";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["Title"]</h4>
 
 <div>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
@@ -69,3 +68,11 @@
     <a asp-action="Edit" asp-route-id="@Model.CustomerID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').removeClass("active");
+    $('#customer').addClass("active");
+</script>

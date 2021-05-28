@@ -26,9 +26,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About us</a>
                         </li>
                         @if (User.IsInRole("Technician"))
-                        { <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Incidents" asp-action="ListByTech">
-                            Incident Manager</a>
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Incidents" asp-action="ListByTech">
+                                    Incident Manager
+                                </a>
                             </li>
                         }
                     </ul>
@@ -36,6 +38,40 @@
             </div>
         </nav>
     </header>
+    @{ if (User.IsInRole("Administrator"))
+        {
+            <ul class="nav nav-tabs container mb-5">
+                <li class="nav-item dropdown">
+                    <a id="incidentnav" class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Incidents" asp-action="Index" role="button" aria-haspopup="true" aria-expanded="false">Incident Manager</a>
+                    <div class="dropdown-menu">
+                        <a id="all" class="list-items dropdown-item" asp-controller="Incidents" asp-action="Index">All incidents</a>
+                        @*<a id="all-incidents" class="dropdown-item" href="">All incidents</a>*@
+                        <a id="unassigned-incidents" class="list-items dropdown-item" href="">Unassigned incidents</a>
+                        <a id="open-incidents" class="list-items dropdown-item" href="">Open incidents</a>
+
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Technicians" asp-action="Index"
+                       id="technician" class="nav-link">Technician Manager</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Registrations" asp-action="Index"
+                       id="registration" class="nav-link">Registration Manager</a>
+                </li>
+
+                <li class="nav-item">
+                    <a asp-controller="Products" asp-action="Index"
+                       id="product" class="nav-link">Product Manager</a>
+                </li>
+
+                <li class="nav-item">
+                    <a asp-controller="Customers" asp-action="Index"
+                       id="customer" class="nav-link">Customer Manager</a>
+                </li>
+
+            </ul>
+        } }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -44,7 +80,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - SportsPro Technical Support
+            SportsPro Technical Support- &copy; 2021
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -53,3 +89,56 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+
+<script>
+
+
+    $(document).ready(() => {
+        $('#incident').click(() => {
+            $('#incident').addClass("active");
+            $('#technician').removeClass("active");
+            $('#product').removeClass("active");
+            $('#registration').removeClass("active");
+            $('#customer').removeClass("active");
+        });
+    });
+
+    $(document).ready(() => {
+
+        $('#unassigned-incidents').click((e) => {
+            e.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: '/incidents/GetIncidents',
+                data: { name: 'unassigned-incidents' }
+            }).done(function (result, statusText, xhdr) {
+                $('#index-incidents').html(result);
+            });
+            $('#unassigned-incidents').addClass("active");
+            $('#all-incidents').removeClass("active");
+            $('#open-incidents').removeClass("active");
+        });
+
+        $('#open-incidents').click((e) => {
+            e.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: '/incidents/GetIncidents',
+                data: { name: 'open-incidents' }
+            }).done(function (result, statusText, xhdr) {
+                $('#index-incidents').html(result);
+            });
+            $('#unassigned-incidents').removeClass("active");
+            $('#all-incidents').removeClass("active");
+            $('#open-incidents').addClass("active");
+        });
+
+
+
+    });
+
+</script>
+
+

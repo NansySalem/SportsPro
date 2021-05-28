@@ -1,41 +1,36 @@
 ﻿@model IEnumerable<SportsPro.Models.Incident>
-@{ ViewData["Title"] = "Technicians"; }
+@{ ViewData["Title"] = "Dashboard"; }
 
 @if (!User.Identity.IsAuthenticated)
 {<h1>SportsPro Technical Support</h1>
     <p>Sports management software for the sports enthusiast</p>
 }
 
-@{ if (User.IsInRole("Administrator"))
-    {
-        <h1>Admin</h1>
-        <div class="list-group">
-            <a asp-controller="Incidents" asp-action="Index"
-               class="list-group-item">Incident Manager</a>
-            <a asp-controller="Products" asp-action="Index"
-               class="list-group-item">Product Manager</a>
-            <a asp-controller="Technicians" asp-action="Index"
-               class="list-group-item">Technician Manager</a>
-            <a asp-controller="Customers" asp-action="Index"
-               class="list-group-item">Customer Manager</a>
-            <a asp-controller="Registrations" asp-action="Index"
-               class="list-group-item">Registration Manager</a>
-        </div> } }
 
 @{ if (User.IsInRole("Technician"))
     {
         <br />
         <h3>Dashboard</h3>
         <hr />
-        @if(this.Model.Count() > 0)
+        @if (this.Model.Count() > 0)
         {
-        <nav class="nav nav-pills nav-justified">
-            <a id="all-incidents" class="nav-link active" href="">All incidents</a>
-            <a id="open-incidents" class="nav-link" href="">Open incidents</a>
-        </nav>
+            @*<nav class="nav nav-pills nav-justified">
+                    <a id="alltechincidents" class="nav-link active" href="">All incidents</a>
+                    <a id="opentechincidents" class="nav-link" href="">Open incidents</a>
+                </nav>*@
+
+            <ul class="nav nav-tabs container mb-3">
+
+                <li class="nav-item">
+                    <a id="alltechincidents" class="nav-link" href="">All Incidents</a>
+                </li>
+                <li class="nav-item">
+                    <a id="opentechincidents" class="nav-link" href="">Open Incidents</a>
+                </li>
+            </ul>
         }
         <br />
-        <div id="incidents">
+        <div id="techincidents">
             <partial name="_selected-incidents" model="@Model" />
         </div>
     }
@@ -46,33 +41,42 @@
 
     $(document).ready(() => {
 
-        $('#all-incidents').click((e) => {
+        $('#alltechincidents').click((e) => {
             e.preventDefault();
             $.ajax({
                 method: 'GET',
                 url: '/home/GetTechIncidents',
                 data: { name: 'all-incidents' }
             }).done(function (result, statusText, xhdr) {
-                $('#incidents').html(result);
+                $('#techincidents').html(result);
             });
-            $('#all-incidents').addClass("active");
-            $('#open-incidents').removeClass("active");
+            $('#alltechincidents').addClass("active");
+            $('#opentechincidents').removeClass("active");
         });
 
-        $('#open-incidents').click((e) => {
+        $('#opentechincidents').click((e) => {
             e.preventDefault();
             $.ajax({
                 method: 'GET',
                 url: '/home/GetTechIncidents',
                 data: { name: 'open-incidents' }
             }).done(function (result, statusText, xhdr) {
-                $('#incidents').html(result);
+                $('#techincidents').html(result);
             });
-            $('#all-incidents').removeClass("active");
-            $('#open-incidents').addClass("active");
+            $('#alltechincidents').removeClass("active");
+            $('#opentechincidents').addClass("active");
         });
 
+
+        $(document).ready(() => {
+
+            $('#unassigned-incidents').removeClass("active");
+            $('#all-incidents').addClass("active");
+            $('#open-incidents').removeClass("active");
+            });
 
 
     });
 </script>
+
+

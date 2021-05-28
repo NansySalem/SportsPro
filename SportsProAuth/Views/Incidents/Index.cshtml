@@ -11,71 +11,23 @@
         @TempData["message"]
     </h4>
 }
-<h2>@ViewData["Title"]</h2>
-<br />
-<nav class="nav nav-pills nav-justified">
-    <a id="all-incidents" class="nav-link active" href="" >All incidents</a>
-    <a id="unassigned-incidents" class="nav-link"  href="">Unassigned incidents</a>
-    <a id="open-incidents" class="nav-link"  href="">Open incidents</a>
-</nav>
-<br />
-<div id="incidents"> 
-   <partial name="_selected-incidents" model="@Model" />
+
+
+<div id="index-incidents">
+    <partial name="_selected-incidents" model="@Model" />
 </div>
 
 <p>
-    <a asp-action="Upsert">Add new incident</a> |
+    <a asp-action="Create">Add new incident</a> |
     <a href="../">Back</a>
 </p>
 
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
-
-    $(document).ready(() => {
-        
-        $('#all-incidents').click((e) => {
-            e.preventDefault();
-                $.ajax({
-                    method: 'GET',
-                    url: '/incidents/GetIncidents',
-                    data: { name: 'all-incidents' }
-                }).done(function (result, statusText, xhdr) {
-                    $('#incidents').html(result);
-                });
-            $('#unassigned-incidents').removeClass("active");
-            $('#all-incidents').addClass("active");
-            $('#open-incidents').removeClass("active");
-        });
-
-        $('#unassigned-incidents').click((e) => {
-            e.preventDefault();
-            $.ajax({
-                method: 'GET',
-                url: '/incidents/GetIncidents',
-                data: { name: 'unassigned-incidents' }
-            }).done(function (result, statusText, xhdr) {
-                $('#incidents').html(result);
-            });
-            $('#unassigned-incidents').addClass("active");
-            $('#all-incidents').removeClass("active");
-            $('#open-incidents').removeClass("active");
-        });
-
-        $('#open-incidents').click((e) => {
-            e.preventDefault();
-            $.ajax({
-                method: 'GET',
-                url: '/incidents/GetIncidents',
-                data: { name: 'open-incidents' }
-            }).done(function (result, statusText, xhdr) {
-                $('#incidents').html(result);
-            });
-            $('#unassigned-incidents').removeClass("active");
-            $('#all-incidents').removeClass("active");
-            $('#open-incidents').addClass("active");
-        });
-
-
-
-    });
+    $('#incidentnav').addClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').removeClass("active");
+    $('#customer').removeClass("active");
 </script>

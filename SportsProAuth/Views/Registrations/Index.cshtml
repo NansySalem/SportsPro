@@ -4,8 +4,6 @@
     ViewData["Title"] = "Registration Manager";
 }
 
-<h2>@ViewData["Title"]</h2>
-
 <table class="table">
     <thead>
         <tr>
@@ -40,3 +38,11 @@
     <a asp-action="Create">Add new Registration</a> |
     <a href="../">Back</a>
 </p>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#incident').removeClass("active");
+    $('#technician').removeClass("active");
+    $('#product').removeClass("active");
+    $('#registration').addClass("active");
+    $('#customer').removeClass("active");
+</script>

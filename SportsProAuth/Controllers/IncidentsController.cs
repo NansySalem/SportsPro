@@ -26,26 +26,32 @@ namespace SportsProAuth.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
-            var sportsProContext = _context.Incidents.Include(i => i.Customer)
+            var inc = _context.Incidents.Include(i => i.Customer)
                                        .Include(i => i.Product)
                                        .Include(i => i.Technician);
-            return View(await sportsProContext.ToListAsync());
+            ViewData["classify"] = "All Incidents";
+            return View( await inc.ToListAsync());
         }
         public async Task<IActionResult> GetIncidents(string name)
         {
+           
             if (name == "all-incidents")
             {
-                var sportsProContext = _context.Incidents.Include(i => i.Customer)
+                var inc = _context.Incidents.Include(i => i.Customer)
                                        .Include(i => i.Product)
                                        .Include(i => i.Technician);
-                return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
+                ViewData["classify"] = "All Incidents";
+                return PartialView("_selected-incidents", await inc.ToListAsync());
+              // return View(await inc.ToListAsync());
             }
             else if (name == "unassigned-incidents")
             {
                 var sportsProContext = _context.Incidents.Include(i => i.Customer)
                                     .Include(i => i.Product)
                                     .Include(i => i.Technician).Where(t => t.TechnicianID == null);
+                ViewData["classify"] = "Unassigned Incidents";
                 return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
+               
             }
             else if (name == "open-incidents")
             {
@@ -53,11 +59,12 @@ namespace SportsProAuth.Controllers
                                     .Include(i => i.Product)
                                     .Include(i => i.Technician)
                                     .Where(d => d.DateClosed == null);
+                ViewData["classify"] = "Open Incidents";
                 return PartialView("_selected-incidents", await sportsProContext.ToListAsync());
             }
             else
                 return View();
-
+            
 
 
             //ViewData["assigned_incidents"] = _context.Incidents.Select(i => i.TechnicianID == tech.TechnicianID);
@@ -100,6 +107,7 @@ namespace SportsProAuth.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName");
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name");
             ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name");
+          
             return View();
         }
 
@@ -115,11 +123,14 @@ namespace SportsProAuth.Controllers
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
+                TempData["message"] = $"{ incident.Title} added to database.";
                 return RedirectToAction(nameof(Index));
+               
             }
             ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
             ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
             ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+           
             return View(incident);
         }
 
@@ -300,6 +311,7 @@ namespace SportsProAuth.Controllers
             var incident = await _context.Incidents.FindAsync(id);
             _context.Incidents.Remove(incident);
             await _context.SaveChangesAsync();
+            TempData["message"] = $"{ incident.Title} deleted from database.";
             return RedirectToAction(nameof(Index));
         }
 
