@@ -215,9 +215,10 @@ namespace SportsProAuth.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-            ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+            ViewData["CustomerName"] = _context.Customers.SingleOrDefault(c => incident.CustomerID == c.CustomerID).FullName;
+            ViewData["ProductName"] = _context.Products.SingleOrDefault(p => incident.ProductID == p.ProductID).Name;
+            ViewData["TechnicianName"] = _context.Technicians.SingleOrDefault(t => incident.TechnicianID == t.TechnicianID).Name;
+
             return View(incident);
         }
 
@@ -257,9 +258,13 @@ namespace SportsProAuth.Controllers
                         }
                         return Redirect("https://localhost:44357/");
                     }
-                    ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
-                    ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
-                    ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+                    //ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "FullName", incident.CustomerID);
+                    //ViewData["ProductID"] = new SelectList(_context.Products, "ProductID", "Name", incident.ProductID);
+                    //ViewData["TechnicianID"] = new SelectList(_context.Technicians, "TechnicianID", "Name", incident.TechnicianID);
+                    //
+                    ViewData["CustomerName"] = _context.Customers.SingleOrDefault(c => incident.CustomerID == c.CustomerID).FullName;
+                    ViewData["ProductName"] = _context.Products.SingleOrDefault(p => incident.ProductID == p.ProductID).Name;
+                    ViewData["TechnicianName"] = _context.Technicians.SingleOrDefault(t => incident.TechnicianID == t.TechnicianID).Name;
                     return View(incident);
                 }
             }
